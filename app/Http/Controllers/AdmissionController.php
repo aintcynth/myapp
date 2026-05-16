@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdmissionController extends Controller
 {
@@ -32,20 +33,28 @@ class AdmissionController extends Controller
         return redirect()->back()->with('success', 'Your admission application has been submitted successfully!');
     }
 
-    // Admin: List all admissions
+    // Admin/Staff: List all admissions
     public function index()
     {
+        if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'staff'])) {
+            abort(403);
+        }
+
         $admissions = Admission::latest()->get();
         return view('admin.admissions', compact('admissions'));
     }
 
-    // Admin: Update status and remarks
+    // Admin/Staff: Update status and remarks
     public function updateStatus(Request $request, Admission $admission)
     {
         $request->validate([
             'status' => 'required|in:pending,under_review,approved,rejected',
             'remarks' => 'nullable|string',
         ]);
+
+        if (!Auth::check() || !in_array(Auth::user()->role, ['admin', 'staff'])) {
+            abort(403);
+        }
 
         $admission->update($request->only(['status', 'remarks']));
 

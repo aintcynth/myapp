@@ -28,13 +28,7 @@ class AuthController extends Controller
             $user = Auth::user();
 
             // Redirect to role-based dashboard
-            if ($user->role === 'admin') {
-                return redirect('/admin/admissions')->with('success', 'Welcome Admin!');
-            } elseif ($user->role === 'staff') {
-                return redirect('/staff/dashboard')->with('success', 'Welcome Staff!');
-            } else {
-                return redirect('/user/dashboard')->with('success', 'Welcome!');
-            }
+            return redirect()->route('dashboard')->with('success', 'Welcome back!');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials.']);
@@ -63,7 +57,7 @@ class AuthController extends Controller
         ]);
 
         Auth::login($user);
-        return redirect('/user/dashboard')->with('success', 'Registration successful!');
+        return redirect()->route('dashboard')->with('success', 'Registration successful!');
     }
 
     // Handle logout
