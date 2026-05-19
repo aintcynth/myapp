@@ -25,6 +25,10 @@
                 <a href="{{ route('admin.centers.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Assessment Centers</a>
                 <a href="{{ route('admin.users.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Manage Users</a>
                 <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Home</a>
+                <form action="{{ route('logout') }}" method="POST" class="mt-4">
+                    @csrf
+                    <button type="submit" class="w-full text-left rounded-2xl px-4 py-3 bg-red-600 text-white hover:bg-red-700">Logout</button>
+                </form>
             </nav>
         </aside>
 
