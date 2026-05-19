@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Admission') }}</title>
+        <title>{{ config('app.name', 'TESDA Assessment Portal') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -22,7 +22,7 @@
     <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] min-h-screen flex flex-col">
         <header class="w-full border-b border-[#e3e3e0] dark:border-[#3E3E3A] bg-white/90 dark:bg-[#080808]/90 backdrop-blur-sm">
             <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-                <div class="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">{{ config('app.name', 'Admission') }}</div>
+                <div class="text-lg font-semibold tracking-tight text-slate-900 dark:text-white">{{ config('app.name', 'TESDA Assessment Portal') }}</div>
                 @if (Route::has('login'))
                     <nav class="flex items-center gap-3 text-sm text-slate-600 dark:text-slate-300">
                         @auth
@@ -44,27 +44,27 @@
                     <div class="space-y-8">
                         <div class="inline-flex items-center gap-2 rounded-full bg-slate-100 px-4 py-2 text-sm font-medium text-slate-700 dark:bg-slate-900 dark:text-slate-200">
                             <span class="h-2.5 w-2.5 rounded-full bg-slate-900 dark:bg-white"></span>
-                            Enterprise-ready admission software
+                            TESDA-accredited assessment center
                         </div>
                         <div class="space-y-6">
-                            <h1 class="max-w-2xl text-4xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-5xl">Modern admission workflows for schools, training centers, and corporate academies.</h1>
-                            <p class="max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">Manage applicant submissions, review applications, update status, and store remarks with a clean role-based dashboard built on Laravel.</p>
+                            <h1 class="max-w-2xl text-4xl font-semibold tracking-tight text-slate-950 dark:text-white sm:text-5xl">National Competency Assessment &amp; Certification for Filipino Workers.</h1>
+                            <p class="max-w-xl text-lg leading-8 text-slate-600 dark:text-slate-300">Apply for TESDA competency assessments, track your application status, and receive your National Certificate (NC) or Certificate of Competency (COC) through a streamlined online portal.</p>
                         </div>
                         <div class="flex flex-col gap-4 sm:flex-row">
-                            <a href="{{ route('register') }}" class="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800">Start your application</a>
+                            <a href="{{ route('register') }}" class="inline-flex items-center justify-center rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800">Apply for Assessment</a>
                         </div>
                         <div class="grid gap-4 sm:grid-cols-3">
                             <div class="rounded-3xl border border-slate-200 bg-white px-5 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                                <p class="text-sm font-medium text-slate-500">Applications processed</p>
-                                <p class="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">1.2K+</p>
+                                <p class="text-sm font-medium text-slate-500">Assessments processed</p>
+                                <p class="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">5.8K+</p>
                             </div>
                             <div class="rounded-3xl border border-slate-200 bg-white px-5 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                                <p class="text-sm font-medium text-slate-500">Approval rate</p>
-                                <p class="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">98%</p>
+                                <p class="text-sm font-medium text-slate-500">Certificates issued</p>
+                                <p class="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">4.2K+</p>
                             </div>
                             <div class="rounded-3xl border border-slate-200 bg-white px-5 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                                <p class="text-sm font-medium text-slate-500">Admin reviews</p>
-                                <p class="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">24/7</p>
+                                <p class="text-sm font-medium text-slate-500">Qualifications offered</p>
+                                <p class="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">NC I–IV</p>
                             </div>
                         </div>
                     </div>
@@ -72,23 +72,23 @@
                         <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-900/90 via-slate-900/50 to-transparent"></div>
                         <div class="relative space-y-8">
                             <div class="space-y-4">
-                                <span class="inline-flex rounded-full bg-slate-700/80 px-4 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">Admissions suite</span>
-                                <h2 class="text-3xl font-semibold">Fast, secure application tracking.</h2>
-                                <p class="text-slate-300">Give your team a clear view into every admission request�organized by status, notes, and priority.</p>
+                                <span class="inline-flex rounded-full bg-slate-700/80 px-4 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">Assessment suite</span>
+                                <h2 class="text-3xl font-semibold">Fast, transparent competency certification.</h2>
+                                <p class="text-slate-300">Give assessors and applicants a clear view into every assessment request — organized by qualification, status, and scheduled date.</p>
                             </div>
                             <div class="grid gap-4 sm:grid-cols-2">
                                 <div class="rounded-3xl bg-white/5 p-5">
-                                    <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-300">Status control</p>
-                                    <p class="mt-3 text-sm leading-6 text-slate-300">Pending, under review, approved, or rejected with a single update flow.</p>
+                                    <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-300">Status tracking</p>
+                                    <p class="mt-3 text-sm leading-6 text-slate-300">Pending, scheduled, assessed, competent, or not yet competent — updated in real time.</p>
                                 </div>
                                 <div class="rounded-3xl bg-white/5 p-5">
-                                    <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-300">Staff teamwork</p>
-                                    <p class="mt-3 text-sm leading-6 text-slate-300">Role-based dashboards for admin, staff, and applicants.</p>
+                                    <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-300">Role-based access</p>
+                                    <p class="mt-3 text-sm leading-6 text-slate-300">Separate dashboards for assessors, admin staff, and applicants.</p>
                                 </div>
                             </div>
                             <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
-                                <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Intelligent pipeline</p>
-                                <p class="mt-3 text-lg font-semibold text-white">One platform to submit, review, and finalize admission decisions.</p>
+                                <p class="text-sm uppercase tracking-[0.24em] text-slate-400">Competency pipeline</p>
+                                <p class="mt-3 text-lg font-semibold text-white">One platform to apply, assess, and issue TESDA qualifications and certificates.</p>
                             </div>
                         </div>
                     </div>
@@ -100,26 +100,26 @@
                     <div class="grid gap-10 lg:grid-cols-3">
                         <div>
                             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">What we offer</p>
-                            <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Designed for modern teams and fast deployment.</h2>
+                            <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Built for TESDA assessors, administrators, and applicants.</h2>
                         </div>
                         <div class="space-y-6">
                             <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
                                 <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Applicant portal</h3>
-                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Applicants can submit forms, track progress, and receive status updates.</p>
+                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Submit assessment applications, upload documentary requirements, and track your certification progress online.</p>
                             </div>
                             <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Review dashboard</h3>
-                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Admins and staff can review applications with remarks and decision controls.</p>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Assessor dashboard</h3>
+                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Review applications, record assessment results (Competent / NYC), and issue certificates from a single interface.</p>
                             </div>
                         </div>
                         <div class="space-y-6">
                             <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Secure data</h3>
-                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Keep applicant data protected with Laravel authentication and role checks.</p>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Secure records</h3>
+                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Keep applicant data and certification records protected with role-based authentication and access controls.</p>
                             </div>
                             <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Deployment-ready</h3>
-                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Perfect for hosting on shared, cloud, or managed platforms with no extra setup.</p>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Multiple qualifications</h3>
+                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Supports NC I, NC II, NC III, NC IV, and Certificate of Competency (COC) across various TESDA-registered sectors.</p>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
         </main>
 
         <footer class="border-t border-slate-200 bg-white/90 dark:border-slate-800 dark:bg-[#080808]/90">
-            <div class="mx-auto max-w-7xl px-6 py-6 text-sm text-slate-600 dark:text-slate-400 lg:px-8">� {{ date('Y') }} {{ config('app.name', 'Admission') }}. Built for efficient admissions and enterprise workflows.</div>
+            <div class="mx-auto max-w-7xl px-6 py-6 text-sm text-slate-600 dark:text-slate-400 lg:px-8">&copy; {{ date('Y') }} {{ config('app.name', 'TESDA Assessment Portal') }}. Empowering Filipino workers through competency-based assessment and certification.</div>
         </footer>
     </body>
 </html>
