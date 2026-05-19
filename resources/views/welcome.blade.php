@@ -55,11 +55,11 @@
                         </div>
                         <div class="grid gap-4 sm:grid-cols-3">
                             <div class="rounded-3xl border border-slate-200 bg-white px-5 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                                <p class="text-sm font-medium text-slate-500">Assessments processed</p>
+                                <p class="text-sm font-medium text-slate-500">Applicants processed</p>
                                 <p class="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">5.8K+</p>
                             </div>
                             <div class="rounded-3xl border border-slate-200 bg-white px-5 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-950">
-                                <p class="text-sm font-medium text-slate-500">Certificates issued</p>
+                                <p class="text-sm font-medium text-slate-500">Assessed</p>
                                 <p class="mt-3 text-3xl font-semibold text-slate-900 dark:text-white">4.2K+</p>
                             </div>
                             <div class="rounded-3xl border border-slate-200 bg-white px-5 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-950">
@@ -72,18 +72,18 @@
                         <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-slate-900/90 via-slate-900/50 to-transparent"></div>
                         <div class="relative space-y-8">
                             <div class="space-y-4">
-                                <span class="inline-flex rounded-full bg-slate-700/80 px-4 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">Assessment suite</span>
+                                <span class="inline-flex rounded-full bg-slate-700/80 px-4 py-2 text-xs uppercase tracking-[0.24em] text-slate-200">Assessment Portal</span>
                                 <h2 class="text-3xl font-semibold">Fast, transparent competency certification.</h2>
                                 <p class="text-slate-300">Give assessors and applicants a clear view into every assessment request — organized by qualification, status, and scheduled date.</p>
                             </div>
                             <div class="grid gap-4 sm:grid-cols-2">
                                 <div class="rounded-3xl bg-white/5 p-5">
                                     <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-300">Status tracking</p>
-                                    <p class="mt-3 text-sm leading-6 text-slate-300">Pending, scheduled, assessed, competent, or not yet competent — updated in real time.</p>
+                                    <p class="mt-3 text-sm leading-6 text-slate-300">Pending, scheduled, assessed — updated in real time.</p>
                                 </div>
                                 <div class="rounded-3xl bg-white/5 p-5">
                                     <p class="text-sm font-medium uppercase tracking-[0.2em] text-slate-300">Role-based access</p>
-                                    <p class="mt-3 text-sm leading-6 text-slate-300">Separate dashboards for assessors, admin staff, and applicants.</p>
+                                    <p class="mt-3 text-sm leading-6 text-slate-300">Separate dashboards for processing officers, provincial CACS focal, and applicants.</p>
                                 </div>
                             </div>
                             <div class="rounded-[1.75rem] border border-white/10 bg-white/5 p-6">
@@ -100,7 +100,7 @@
                     <div class="grid gap-10 lg:grid-cols-3">
                         <div>
                             <p class="text-sm font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">What we offer</p>
-                            <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Built for TESDA assessors, administrators, and applicants.</h2>
+                            <h2 class="mt-4 text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">Built for TESDA Accredited Assessment Centers and applicants who are willing to subject themselves to the assessment process.</h2>
                         </div>
                         <div class="space-y-6">
                             <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
@@ -108,8 +108,8 @@
                                 <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Submit assessment applications, upload documentary requirements, and track your certification progress online.</p>
                             </div>
                             <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Assessor dashboard</h3>
-                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Review applications, record assessment results (Competent / NYC), and issue certificates from a single interface.</p>
+                                <h3 class="text-xl font-semibold text-slate-900 dark:text-white">Assessment Center dashboard</h3>
+                                <p class="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">Review applications for assessment from a single interface.</p>
                             </div>
                         </div>
                         <div class="space-y-6">
