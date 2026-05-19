@@ -6,39 +6,64 @@
     <title>User Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen">
-    <nav class="bg-blue-600 text-white px-6 py-4 shadow">
-        <div class="flex justify-between items-center">
-            <h1 class="text-2xl font-bold">User Dashboard</h1>
-            <div>
-                <span class="mr-4">Welcome, {{ auth()->user()->name }}</span>
-                <a href="{{ route('logout') }}" class="bg-red-500 px-4 py-2 rounded hover:bg-red-600">Logout</a>
+<body class="bg-slate-50 min-h-screen text-slate-900">
+    <div class="min-h-screen lg:flex">
+        <aside class="bg-white border-r border-slate-200 px-6 py-8 lg:w-80">
+            <div class="mb-10">
+                <a href="{{ route('user.dashboard') }}" class="inline-flex items-center gap-3">
+                    <div class="h-11 w-11 rounded-2xl bg-blue-600 text-white grid place-items-center font-bold">U</div>
+                    <div>
+                        <p class="text-sm uppercase tracking-[0.32em] text-slate-500">User</p>
+                        <p class="text-lg font-semibold text-slate-900">Dashboard</p>
+                    </div>
+                </a>
             </div>
-        </div>
-    </nav>
+            <nav class="space-y-2 text-sm">
+                <a href="{{ route('user.dashboard') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 font-semibold text-slate-900">Overview</a>
+                <a href="{{ route('admission.create') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Apply for Admission</a>
+                <a href="{{ route('quick.reference') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Quick Reference</a>
+                <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Home</a>
+            </nav>
+        </aside>
 
-    <div class="container mx-auto p-8">
-        @if (session('success'))
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-                {{ session('success') }}
-            </div>
-        @endif
+        <main class="flex-1 p-6 lg:p-10">
+            <header class="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                    <p class="text-sm uppercase tracking-[0.3em] text-slate-500">User Dashboard</p>
+                    <h1 class="text-4xl font-bold">Welcome, {{ auth()->user()->name }}</h1>
+                    <p class="mt-2 text-slate-600">Role: <span class="font-semibold capitalize">{{ auth()->user()->role }}</span></p>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="{{ route('home') }}" class="px-4 py-2 rounded-lg border bg-white text-slate-900 hover:bg-slate-100">Home</a>
+                    <form action="{{ route('logout') }}" method="POST" class="inline">
+                        @csrf
+                        <button type="submit" class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Logout</button>
+                    </form>
+                </div>
+            </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-xl font-bold mb-4">Profile</h2>
-                <p class="mb-2"><strong>Name:</strong> {{ auth()->user()->name }}</p>
-                <p class="mb-2"><strong>Email:</strong> {{ auth()->user()->email }}</p>
-                <p class="mb-2"><strong>Role:</strong> <span class="capitalize">{{ auth()->user()->role }}</span></p>
-            </div>
+            @if (session('success'))
+                <div class="mb-6 rounded-2xl border border-green-200 bg-green-50 p-4 text-green-800">
+                    {{ session('success') }}
+                </div>
+            @endif
 
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <h2 class="text-xl font-bold mb-4">Quick Links</h2>
-                <ul class="space-y-2">
-                    <li><a href="{{ route('admission.create') }}" class="text-blue-500 hover:underline">Apply for Admission</a></li>
-                </ul>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold mb-4">Profile</h2>
+                    <p class="mb-2"><strong>Name:</strong> {{ auth()->user()->name }}</p>
+                    <p class="mb-2"><strong>Email:</strong> {{ auth()->user()->email }}</p>
+                    <p class="mb-2"><strong>Role:</strong> <span class="capitalize">{{ auth()->user()->role }}</span></p>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-bold mb-4">Quick Links</h2>
+                    <ul class="space-y-2">
+                        <li><a href="{{ route('admission.create') }}" class="text-blue-500 hover:underline">Apply for Admission</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </main>
     </div>
 </body>
 </html>

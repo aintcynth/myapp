@@ -6,17 +6,18 @@
     <title>{{ config('app.name', 'Admission') }} — Login</title>
     <style>
         :root{color-scheme:light dark}
-        html{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f8fafc;color:#0f172a}
-        body{margin:0;min-height:100vh;display:grid;place-items:center;padding:1.25rem;background:#f8fafc}
-        .card{width:min(100%,420px);background:#ffffff;border:1px solid #e2e8f0;border-radius:1.25rem;box-shadow:0 24px 60px rgba(15,23,42,.08);padding:2rem}
-        h1{margin:0 0 1rem;font-size:1.95rem;line-height:1.1}
-        label{display:block;margin:.9rem 0 .35rem;font-size:.95rem;color:#334155}
+        *,*::before,*::after{box-sizing:border-box}
+        html{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f1f5f9;color:#0f172a}
+        body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;background:#f1f5f9}
+        .card{width:100%;max-width:420px;background:#ffffff;border:1px solid #e2e8f0;border-radius:1.25rem;box-shadow:0 24px 45px rgba(15,23,42,.08);padding:2rem}
+        h1{margin:0 0 1rem;font-size:2rem;line-height:1.1}
+        label{display:block;margin:.95rem 0 .35rem;font-size:.95rem;color:#334155}
         input{width:100%;padding:.95rem 1rem;border:1px solid #cbd5e1;border-radius:.85rem;font:1rem/1.5 system-ui, sans-serif;color:#0f172a}
         input:focus{outline:none;border-color:#6366f1;box-shadow:0 0 0 4px rgba(99,102,241,.15)}
         button{width:100%;padding:1rem;border:none;border-radius:.85rem;background:#334155;color:#fff;font:1rem/1.5 system-ui, sans-serif;font-weight:700;cursor:pointer}
         button:hover{background:#1f2937}
-        .feedback{margin-bottom:1rem;padding:1rem;border-radius:.85rem;background:#fee2e2;color:#981b1b;font-size:.95rem}
-        .note{margin-top:1.25rem;font-size:.95rem;color:#475569}
+        .feedback{margin-bottom:1rem;padding:1rem;border-radius:.85rem;background:#fee2e2;color:#991b1b;font-size:.95rem}
+        .note{margin-top:1.5rem;font-size:.95rem;color:#475569}
         .link{color:#4f46e5;text-decoration:none}
     </style>
 </head>
