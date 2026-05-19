@@ -18,11 +18,7 @@
                     </div>
                 </a>
             </div>
-            <nav class="space-y-2 text-sm">
-                <a href="{{ route('user.dashboard') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 font-semibold text-slate-900">Overview</a>
-                <a href="{{ route('admission.create') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Apply for Admission</a>
-                <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Home</a>
-            </nav>
+            @include('partials.nav')
         </aside>
 
         <div class="lg:ml-72 flex-1">
