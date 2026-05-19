@@ -20,9 +20,17 @@
             </div>
             <nav class="space-y-2 text-sm">
                 <a href="{{ route('dashboard') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 font-semibold text-slate-900">Overview</a>
-                <a href="{{ route('admission.create') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Submit Admission</a>
+                @if($user->role === 'user')
+                    <a href="{{ route('admission.create') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Submit Admission</a>
+                    <a href="{{ route('user.dashboard') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">View Application Status</a>
+                @endif
                 @if($user->role === 'admin' || $user->role === 'staff')
                     <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Review Admissions</a>
+                @endif
+                @if($user->role === 'admin')
+                    <a href="{{ route('admin.courses.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Manage Courses</a>
+                    <a href="{{ route('admin.centers.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Assessment Centers</a>
+                    <a href="{{ route('admin.users.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Manage Users</a>
                 @endif
                 <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Home</a>
             </nav>
@@ -60,10 +68,17 @@
                 <div class="grid gap-6 lg:grid-cols-3">
                     <div class="rounded-3xl bg-white p-6 shadow-sm border border-slate-200">
                         <h2 class="text-xl font-semibold mb-4">Quick Actions</h2>
-                        <div class="space-y-3 text-slate-700 text-sm">
-                            <a href="{{ route('admission.create') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Submit Admission</a>
-                            @if($user->role === 'admin' || $user->role === 'staff')
-                                <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Review Admissions</a>
+                                <div class="space-y-3 text-slate-700 text-sm">
+                            @if($user->role === 'admin')
+                                <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Manage Admissions</a>
+                                <a href="{{ route('admin.courses.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Manage Courses</a>
+                                <a href="{{ route('admin.centers.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Assessment Centers</a>
+                                <a href="{{ route('admin.users.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Manage Users</a>
+                            @elseif($user->role === 'staff')
+                                <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Review Assigned Admissions</a>
+                            @else
+                                <a href="{{ route('admission.create') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Submit Admission</a>
+                                <a href="{{ route('user.dashboard') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">View Application Status</a>
                             @endif
                         </div>
                     </div>

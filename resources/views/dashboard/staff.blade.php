@@ -65,7 +65,8 @@
                     <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
                         <h2 class="text-xl font-bold mb-4">Tasks</h2>
                         <ul class="space-y-2">
-                            <li><a href="{{ route('admin.admissions.index') }}" class="text-blue-500 hover:underline">Review Admissions</a></li>
+                            <li><a href="{{ route('admin.admissions.index') }}" class="text-blue-500 hover:underline">Review Admissions Assigned to You</a></li>
+                            <li class="text-slate-600">Only staff-assigned applications appear here.</li>
                         </ul>
                     </div>
                 </div>
