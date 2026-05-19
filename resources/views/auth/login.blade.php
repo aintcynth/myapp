@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>input:focus{outline:none;box-shadow:0 0 0 4px rgba(59,130,246,0.15);border-color:#3b82f6}</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ config('app.name', 'Admission') }} — Login</title>
+    <style>
+        :root{color-scheme:light dark}
+        html{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#f8fafc;color:#0f172a}
+        body{margin:0;min-height:100vh;display:grid;place-items:center;padding:1.25rem;background:#f8fafc}
+        .card{width:min(100%,420px);background:#ffffff;border:1px solid #e2e8f0;border-radius:1.25rem;box-shadow:0 24px 60px rgba(15,23,42,.08);padding:2rem}
+        h1{margin:0 0 1rem;font-size:1.95rem;line-height:1.1}
+        label{display:block;margin:.9rem 0 .35rem;font-size:.95rem;color:#334155}
+        input{width:100%;padding:.95rem 1rem;border:1px solid #cbd5e1;border-radius:.85rem;font:1rem/1.5 system-ui, sans-serif;color:#0f172a}
+        input:focus{outline:none;border-color:#6366f1;box-shadow:0 0 0 4px rgba(99,102,241,.15)}
+        button{width:100%;padding:1rem;border:none;border-radius:.85rem;background:#334155;color:#fff;font:1rem/1.5 system-ui, sans-serif;font-weight:700;cursor:pointer}
+        button:hover{background:#1f2937}
+        .feedback{margin-bottom:1rem;padding:1rem;border-radius:.85rem;background:#fee2e2;color:#981b1b;font-size:.95rem}
+        .note{margin-top:1.25rem;font-size:.95rem;color:#475569}
+        .link{color:#4f46e5;text-decoration:none}
+    </style>
 </head>
-<body class="bg-white min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-sm p-6">
-        <h1 class="text-2xl font-semibold mb-4">Sign in</h1>
+<body>
+    <div class="card">
+        <h1>Sign in</h1>
 
         @if ($errors->any())
-            <div class="mb-4 text-sm text-red-600">
-                {{ $errors->first() }}
-            </div>
+            <div class="feedback">{{ $errors->first() }}</div>
         @endif
 
-        <form action="{{ route('login') }}" method="POST" class="space-y-4">
+        <form action="{{ route('login') }}" method="POST">
             @csrf
-            <div>
-                <label class="block text-sm text-slate-700 mb-1">Email</label>
-                <input type="email" name="email" required class="w-full border rounded px-3 py-2">
-            </div>
-            <div>
-                <label class="block text-sm text-slate-700 mb-1">Password</label>
-                <input type="password" name="password" required class="w-full border rounded px-3 py-2">
-            </div>
-            <div>
-                <button type="submit" class="w-full bg-blue-600 text-white rounded px-3 py-2">Sign in</button>
-            </div>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" autocomplete="username" required>
+
+            <label for="password">Password</label>
+            <input id="password" type="password" name="password" autocomplete="current-password" required>
+
+            <button type="submit">Sign in</button>
         </form>
 
-        <p class="mt-4 text-sm text-slate-600">No account? <a href="{{ route('register') }}" class="text-blue-600">Register</a></p>
+        <p class="note">Need an account? <a class="link" href="{{ route('register') }}">Create one</a></p>
     </div>
 </body>
 </html>
