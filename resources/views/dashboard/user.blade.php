@@ -63,10 +63,19 @@
                     </div>
 
                     <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
-                        <h2 class="text-xl font-bold mb-4">Quick Links</h2>
-                        <ul class="space-y-2">
-                            <li><a href="{{ route('admission.create') }}" class="text-blue-500 hover:underline">Apply for Admission</a></li>
-                        </ul>
+                        <h2 class="text-xl font-bold mb-4">Application Status</h2>
+                        @if(isset($admission) && $admission)
+                            <p class="mb-2"><strong>Course:</strong> {{ $admission->course ?: 'N/A' }}</p>
+                            <p class="mb-2"><strong>Status:</strong> <span class="capitalize">{{ str_replace('_', ' ', $admission->status) }}</span></p>
+                            <p class="mb-2"><strong>Assessment Center:</strong> {{ $admission->assessmentCenter?->name ?? 'Pending assignment' }}</p>
+                            <p class="mb-2"><strong>Assigned Staff:</strong> {{ $admission->assignedStaff?->name ?? 'Not assigned yet' }}</p>
+                            @if($admission->remarks)
+                                <p class="mt-3 text-sm text-slate-600"><strong>Remarks:</strong> {{ $admission->remarks }}</p>
+                            @endif
+                        @else
+                            <p class="text-slate-600">You have not submitted an admission application yet.</p>
+                            <a href="{{ route('admission.create') }}" class="text-blue-500 hover:underline">Apply now</a>
+                        @endif
                     </div>
                 </div>
             </main>

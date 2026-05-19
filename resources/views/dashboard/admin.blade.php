@@ -66,6 +66,9 @@
                         <h2 class="text-xl font-bold mb-4">Admin Functions</h2>
                         <ul class="space-y-2">
                             <li><a href="{{ route('admin.admissions.index') }}" class="text-blue-500 hover:underline">Manage Admissions</a></li>
+                            <li><a href="{{ route('admin.courses.index') }}" class="text-blue-500 hover:underline">Manage Courses</a></li>
+                            <li><a href="{{ route('admin.centers.index') }}" class="text-blue-500 hover:underline">Assessment Centers</a></li>
+                            <li><a href="{{ route('admin.users.index') }}" class="text-blue-500 hover:underline">Manage Users</a></li>
                         </ul>
                     </div>
 

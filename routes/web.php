@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 
@@ -32,6 +33,16 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/admin/admissions', [AdmissionController::class, 'index'])->name('admin.admissions.index');
     Route::post('/admin/admissions/{admission}', [AdmissionController::class, 'updateStatus'])->name('admin.admissions.update');
+});
+
+// Admin management routes
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/courses', [AdminController::class, 'courses'])->name('admin.courses.index');
+    Route::post('/admin/courses', [AdminController::class, 'storeCourse'])->name('admin.courses.store');
+    Route::get('/admin/centers', [AdminController::class, 'centers'])->name('admin.centers.index');
+    Route::post('/admin/centers', [AdminController::class, 'storeCenter'])->name('admin.centers.store');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users.index');
+    Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
 });
 
 

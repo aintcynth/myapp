@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admission;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -21,7 +22,12 @@ class DashboardController extends Controller
             abort(403);
         }
 
-        return view('dashboard.user');
+        $admission = Admission::where('user_id', auth()->id())
+            ->orWhere('email', auth()->user()->email)
+            ->latest()
+            ->first();
+
+        return view('dashboard.user', compact('admission'));
     }
 
     // Staff dashboard
