@@ -9,10 +9,6 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/quick-reference', function () {
-    return view('quick-reference');
-})->name('quick.reference');
-
 // Authentication Routes
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);

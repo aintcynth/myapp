@@ -24,7 +24,6 @@
                 @if($user->role === 'admin' || $user->role === 'staff')
                     <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Review Admissions</a>
                 @endif
-                <a href="{{ route('quick.reference') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Quick Reference</a>
                 <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Home</a>
             </nav>
         </aside>
@@ -66,7 +65,6 @@
                             @if($user->role === 'admin' || $user->role === 'staff')
                                 <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Review Admissions</a>
                             @endif
-                            <a href="{{ route('quick.reference') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Quick Reference</a>
                         </div>
                     </div>
                     <div class="rounded-3xl bg-white p-6 shadow-sm border border-slate-200 lg:col-span-2">

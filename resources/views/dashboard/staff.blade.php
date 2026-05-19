@@ -21,7 +21,6 @@
             <nav class="space-y-2 text-sm">
                 <a href="{{ route('staff.dashboard') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 font-semibold text-slate-900">Overview</a>
                 <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Review Admissions</a>
-                <a href="{{ route('quick.reference') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Quick Reference</a>
                 <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Home</a>
             </nav>
         </aside>
