@@ -2,25 +2,68 @@
     $user = auth()->user();
 @endphp
 
-<nav class="space-y-2 text-sm">
-    {{-- Common link(s) --}}
-    <a href="{{ route('dashboard') }}" class="block rounded-2xl bg-slate-100 px-4 py-3 font-semibold text-slate-900">Overview</a>
+<!-- Nav Item - Dashboard -->
+<li class="nav-item active">
+    <a class="nav-link" href="{{ route('dashboard') }}">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+    </a>
+</li>
 
-    @if($user && $user->role === 'user')
-        <a href="{{ route('admission.create') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Submit Admission</a>
-        <a href="{{ route('user.dashboard') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">View Application Status</a>
-    @endif
+<!-- Divider -->
+<hr class="sidebar-divider">
 
-    @if($user && ($user->role === 'admin' || $user->role === 'staff'))
-        <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Review Admissions</a>
-    @endif
+<!-- Nav Item - Admissions -->
+<li class="nav-item">
+    <a class="nav-link" href="{{ route('home') }}">
+        <i class="fas fa-fw fa-home"></i>
+        <span>Home</span>
+    </a>
+</li>
 
-    @if($user && $user->role === 'admin')
-        <a href="{{ route('admin.courses.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Manage Courses</a>
-        <a href="{{ route('admin.centers.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Assessment Centers</a>
-        <a href="{{ route('admin.users.index') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Manage Users</a>
-    @endif
+@if($user && $user->role === 'user')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admission.create') }}">
+            <i class="fas fa-fw fa-clipboard-list"></i>
+            <span>Submit Admission</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('user.dashboard') }}">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Application Status</span>
+        </a>
+    </li>
+@endif
 
-    <a href="{{ route('home') }}" class="block rounded-2xl px-4 py-3 text-slate-700 hover:bg-slate-50">Home</a>
-</nav>
+@if($user && ($user->role === 'admin' || $user->role === 'staff'))
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.admissions.index') }}">
+            <i class="fas fa-fw fa-list"></i>
+            <span>Review Admissions</span>
+        </a>
+    </li>
+@endif
+
+@if($user && $user->role === 'admin')
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.courses.index') }}">
+            <i class="fas fa-fw fa-book"></i>
+            <span>Manage Courses</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.centers.index') }}">
+            <i class="fas fa-fw fa-building"></i>
+            <span>Assessment Centers</span>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('admin.users.index') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Manage Users</span>
+        </a>
+    </li>
+@endif
+
 

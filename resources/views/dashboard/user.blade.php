@@ -1,101 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50 min-h-screen text-slate-900">
-    <div class="min-h-screen lg:flex">
-        <aside id="dashboard-sidebar" class="fixed inset-y-0 left-0 z-30 w-72 transform -translate-x-full overflow-y-auto border-r border-slate-200 bg-white p-6 shadow-xl transition duration-300 lg:static lg:translate-x-0 lg:shadow-none">
-            <div class="mb-10">
-                <a href="{{ route('user.dashboard') }}" class="inline-flex items-center gap-3">
-                    <div class="h-11 w-11 rounded-2xl bg-blue-600 text-white grid place-items-center font-bold">U</div>
-                    <div>
-                        <p class="text-sm uppercase tracking-[0.32em] text-slate-500">User</p>
-                        <p class="text-lg font-semibold text-slate-900">Dashboard</p>
-                    </div>
-                </a>
-            </div>
-            @include('partials.nav')
-        </aside>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <div class="lg:ml-72 flex-1">
-            <main class="p-6 lg:p-10">
-                <div class="mb-8 flex items-center justify-between gap-4">
-                    <button id="sidebar-toggle" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm lg:hidden">
-                        <span class="sr-only">Toggle menu</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                    <div class="min-w-0 flex-1">
-                        <p class="text-sm uppercase tracking-[0.3em] text-slate-500">User Dashboard</p>
-                        <h1 class="text-4xl font-bold">Welcome, {{ auth()->user()->name }}</h1>
-                        <p class="mt-2 text-slate-600">Role: <span class="font-semibold capitalize">{{ auth()->user()->role }}</span></p>
-                    </div>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="{{ route('home') }}" class="px-4 py-2 rounded-lg border bg-white text-slate-900 hover:bg-slate-100">Home</a>
-                        <form action="{{ route('logout') }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Logout</button>
-                        </form>
-                    </div>
+    <title>SB Admin 2 - User Dashboard</title>
+
+    <link href="{{ url('startbootstrap-sb-admin-2-gh-pages/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url('startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css') }}" rel="stylesheet">
+</head>
+<body id="page-top">
+
+<div id="wrapper">
+
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('user.dashboard') }}">
+            <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+            <div class="sidebar-brand-text mx-3">User <sup>Portal</sup></div>
+        </a>
+        <hr class="sidebar-divider my-0">
+        @include('partials.nav')
+
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+    </ul>
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3" type="button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ auth()->user()->name }}</span>
+                            <span class="img-profile rounded-circle" style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#4e73df;color:white;font-weight:700;">{{ strtoupper(substr(auth()->user()->name,0,1)) }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('home') }}">
+                                <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Home
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="container-fluid">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">User Dashboard</h1>
+                    <a href="{{ route('home') }}" class="btn btn-sm btn-light">Home</a>
                 </div>
 
                 @if (session('success'))
-                    <div class="mb-6 rounded-2xl border border-green-200 bg-green-50 p-4 text-green-800">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
                     </div>
                 @endif
 
-                <div class="grid gap-6 md:grid-cols-2">
-                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
-                        <h2 class="text-xl font-bold mb-4">Profile</h2>
-                        <p class="mb-2"><strong>Name:</strong> {{ auth()->user()->name }}</p>
-                        <p class="mb-2"><strong>Email:</strong> {{ auth()->user()->email }}</p>
-                        <p class="mb-2"><strong>Role:</strong> <span class="capitalize">{{ auth()->user()->role }}</span></p>
+                <div class="row">
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header font-weight-bold text-primary">Profile</div>
+                            <div class="card-body">
+                                <p class="mb-2"><strong>Name:</strong> {{ auth()->user()->name }}</p>
+                                <p class="mb-2"><strong>Email:</strong> {{ auth()->user()->email }}</p>
+                                <p class="mb-0"><strong>Role:</strong> {{ auth()->user()->role }}</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200">
-                        <h2 class="text-xl font-bold mb-4">Application Status</h2>
-                        @if(isset($admission) && $admission)
-                            <p class="mb-2"><strong>Course:</strong> {{ $admission->course ?: 'N/A' }}</p>
-                            <p class="mb-2"><strong>Status:</strong> <span class="capitalize">{{ str_replace('_', ' ', $admission->status) }}</span></p>
-                            <p class="mb-2"><strong>Assessment Center:</strong> {{ $admission->assessmentCenter?->name ?? 'Pending assignment' }}</p>
-                            <p class="mb-2"><strong>Assigned Staff:</strong> {{ $admission->assignedStaff?->name ?? 'Not assigned yet' }}</p>
-                            @if($admission->remarks)
-                                <p class="mt-3 text-sm text-slate-600"><strong>Remarks:</strong> {{ $admission->remarks }}</p>
-                            @endif
-                        @else
-                            <p class="text-slate-600">You have not submitted an admission application yet.</p>
-                            <a href="{{ route('admission.create') }}" class="text-blue-500 hover:underline">Apply now</a>
-                        @endif
+                    <div class="col-lg-6 mb-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header font-weight-bold text-primary">Application Status</div>
+                            <div class="card-body">
+                                @if(isset($admission) && $admission)
+                                    <p class="mb-2"><strong>Course:</strong> {{ $admission->course ?: 'N/A' }}</p>
+                                    <p class="mb-2"><strong>Status:</strong> {{ str_replace('_', ' ', $admission->status) }}</p>
+                                    <p class="mb-2"><strong>Assessment Center:</strong> {{ $admission->assessmentCenter?->name ?? 'Pending assignment' }}</p>
+                                    <p class="mb-0"><strong>Assigned Staff:</strong> {{ $admission->assignedStaff?->name ?? 'Not assigned yet' }}</p>
+
+                                    @if($admission->remarks)
+                                        <p class="mt-3 mb-0 text-muted"><strong>Remarks:</strong> {{ $admission->remarks }}</p>
+                                    @endif
+                                @else
+                                    <p class="text-muted mb-3">You have not submitted an admission application yet.</p>
+                                    <a href="{{ route('admission.create') }}" class="btn btn-primary">Apply now</a>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </main>
+
+            </div>
         </div>
+
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; {{ date('Y') }} {{ config('app.name','TESDA Assessment Portal') }}</span>
+                </div>
+            </div>
+        </footer>
     </div>
+</div>
 
-    <script>
-        const sidebar = document.getElementById('dashboard-sidebar');
-        const toggle = document.getElementById('sidebar-toggle');
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-        if (toggle && sidebar) {
-            toggle.addEventListener('click', () => {
-                sidebar.classList.toggle('-translate-x-full');
-                sidebar.classList.toggle('translate-x-0');
-            });
-
-            document.addEventListener('click', (event) => {
-                const target = event.target;
-                if (window.innerWidth < 1024 && !sidebar.contains(target) && !toggle.contains(target)) {
-                    sidebar.classList.add('-translate-x-full');
-                    sidebar.classList.remove('translate-x-0');
-                }
-            });
-        }
-    </script>
+<script src="{{ url('startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url('startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url('startbootstrap-sb-admin-2-gh-pages/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{ url('startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js') }}"></script>
 </body>
 </html>

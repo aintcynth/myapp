@@ -23,11 +23,22 @@ Route::post('/admission', [AdmissionController::class, 'store'])->name('admissio
 
 // Role-based Dashboards (Protected)
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    // Dashboard landing page should always go to the logged-in user's role dashboard
+    Route::get('/dashboard', function () {
+        $user = auth()->user();
+
+        return match ($user->role) {
+            'admin' => redirect()->route('admin.dashboard'),
+            'staff' => redirect()->route('staff.dashboard'),
+            default => redirect()->route('user.dashboard'),
+        };
+    })->name('dashboard');
+
     Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
     Route::get('/staff/dashboard', [DashboardController::class, 'staffDashboard'])->name('staff.dashboard');
     Route::get('/admin/dashboard', [DashboardController::class, 'adminDashboard'])->name('admin.dashboard');
 });
+
 
 // Admin/Staff admission routes (Protected)
 Route::middleware('auth')->group(function () {

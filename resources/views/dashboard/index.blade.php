@@ -1,124 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-50 min-h-screen text-slate-900">
-    <div class="min-h-screen lg:flex">
-        <aside id="dashboard-sidebar" class="fixed inset-y-0 left-0 z-30 w-72 transform -translate-x-full overflow-y-auto border-r border-slate-200 bg-white p-6 shadow-xl transition duration-300 lg:static lg:translate-x-0 lg:shadow-none">
-            <div class="mb-10">
-                <a href="{{ route('dashboard') }}" class="inline-flex items-center gap-3">
-                    <div class="h-11 w-11 rounded-2xl bg-slate-900 text-white grid place-items-center font-bold">A</div>
-                    <div>
-                        <p class="text-sm uppercase tracking-[0.32em] text-slate-500">Admissions</p>
-                        <p class="text-lg font-semibold text-slate-900">Dashboard</p>
-                    </div>
-                </a>
-            </div>
-            @include('partials.nav')
-        </aside>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <div class="lg:ml-72 flex-1">
-            <main class="p-6 lg:p-10">
-                <div class="mb-8 flex items-center justify-between gap-4">
-                    <button id="sidebar-toggle" class="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-sm lg:hidden">
-                        <span class="sr-only">Toggle menu</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
-                    <div class="min-w-0 flex-1">
-                        <p class="text-sm uppercase tracking-[0.3em] text-slate-500">Dashboard</p>
-                        <h1 class="text-4xl font-bold">Welcome, {{ $user->name }}</h1>
-                        <p class="mt-2 text-slate-600">Role: <span class="font-semibold capitalize">{{ $user->role }}</span></p>
-                    </div>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="{{ route('home') }}" class="px-4 py-2 rounded-lg border bg-white text-slate-900 hover:bg-slate-100">Home</a>
-                        <form action="{{ route('logout') }}" method="POST" class="inline">
-                            @csrf
-                            <button type="submit" class="px-4 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700">Logout</button>
-                        </form>
+    <title>SB Admin 2 - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{{ url('startbootstrap-sb-admin-2-gh-pages/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ url('startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css') }}" rel="stylesheet">
+</head>
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">Admissions <sup>Portal</sup></div>
+        </a>
+
+        <hr class="sidebar-divider my-0">
+
+        @include('partials.nav')
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+        <!-- Sidebar Message -->
+        <div class="sidebar-card d-none d-lg-flex">
+            <img class="sidebar-card-illustration mb-2" src="{{ url('startbootstrap-sb-admin-2-gh-pages/img/undraw_rocket.svg') }}" alt="...">
+            <p class="text-center mb-2"><strong>SB Admin 2</strong> is ready for your portal!</p>
+        </div>
+    </ul>
+
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3" type="button">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ $user->name }}</span>
+                            <span class="img-profile rounded-circle" style="width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;background:#4e73df;color:white;font-weight:700;">{{ strtoupper(substr($user->name,0,1)) }}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="{{ route('home') }}">
+                                <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Home
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Welcome, {{ $user->name }}</h1>
+                    <div class="d-flex gap-2">
+                        <a href="{{ route('home') }}" class="btn btn-sm btn-light">Home</a>
                     </div>
                 </div>
 
                 @if(session('success'))
-                    <div class="mb-6 rounded-2xl border border-green-200 bg-green-50 p-4 text-green-800">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
                     </div>
                 @endif
 
-                <div class="grid gap-6 lg:grid-cols-3">
-                    <div class="rounded-3xl bg-white p-6 shadow-sm border border-slate-200">
-                        <h2 class="text-xl font-semibold mb-4">Quick Actions</h2>
-                                <div class="space-y-3 text-slate-700 text-sm">
-                            @if($user->role === 'admin')
-                                <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Manage Admissions</a>
-                                <a href="{{ route('admin.courses.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Manage Courses</a>
-                                <a href="{{ route('admin.centers.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Assessment Centers</a>
-                                <a href="{{ route('admin.users.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Manage Users</a>
-                            @elseif($user->role === 'staff')
-                                <a href="{{ route('admin.admissions.index') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Review Assigned Admissions</a>
-                            @else
-                                <a href="{{ route('admission.create') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">Submit Admission</a>
-                                <a href="{{ route('user.dashboard') }}" class="block rounded-2xl border border-slate-200 px-4 py-3 hover:bg-slate-50">View Application Status</a>
-                            @endif
+                <div class="row">
+                    <div class="col-xl-4 col-lg-5 mb-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header font-weight-bold text-primary">Quick Actions</div>
+                            <div class="card-body">
+                                @if($user->role === 'admin')
+                                    <a href="{{ route('admin.admissions.index') }}" class="btn btn-block btn-light mb-2">Manage Admissions</a>
+                                    <a href="{{ route('admin.courses.index') }}" class="btn btn-block btn-light mb-2">Manage Courses</a>
+                                    <a href="{{ route('admin.centers.index') }}" class="btn btn-block btn-light mb-2">Assessment Centers</a>
+                                    <a href="{{ route('admin.users.index') }}" class="btn btn-block btn-light">Manage Users</a>
+                                @elseif($user->role === 'staff')
+                                    <a href="{{ route('admin.admissions.index') }}" class="btn btn-block btn-light mb-2">Review Assigned Admissions</a>
+                                @else
+                                    <a href="{{ route('admission.create') }}" class="btn btn-block btn-light mb-2">Submit Admission</a>
+                                    <a href="{{ route('user.dashboard') }}" class="btn btn-block btn-light">View Application Status</a>
+                                @endif
+                            </div>
                         </div>
                     </div>
-                    <div class="rounded-3xl bg-white p-6 shadow-sm border border-slate-200 lg:col-span-2">
-                        <h2 class="text-xl font-semibold mb-4">Your role overview</h2>
-                        <div class="grid gap-4 sm:grid-cols-2">
-                            <div class="rounded-2xl bg-slate-50 p-4">
-                                <h3 class="font-semibold mb-2">Access</h3>
-                                <p class="text-sm text-slate-700">You are signed in as a <span class="font-semibold capitalize">{{ $user->role }}</span>.</p>
-                            </div>
-                            <div class="rounded-2xl bg-slate-50 p-4">
-                                <h3 class="font-semibold mb-2">Application Status</h3>
-                                <p class="text-sm text-slate-700">Use this page to navigate to your allowed sections.</p>
-                            </div>
-                        </div>
 
-                        <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-4">
-                            <h3 class="text-lg font-semibold mb-3">Role-specific tools</h3>
-                            <ul class="list-disc list-inside space-y-2 text-slate-700 text-sm">
-                                @if($user->role === 'admin')
-                                    <li>Full admin access to admissions and system management.</li>
-                                    <li>Review all applications and update statuses.</li>
-                                @elseif($user->role === 'staff')
-                                    <li>Review applications and manage staff tasks.</li>
-                                    <li>View application details and update remarks.</li>
-                                @else
-                                    <li>Submit admission applications.</li>
-                                    <li>View your user profile and manage your own account.</li>
-                                @endif
-                            </ul>
+                    <div class="col-xl-8 col-lg-7 mb-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header font-weight-bold text-primary">Your role overview</div>
+                            <div class="card-body">
+                                <p class="mb-2 text-gray-800">Role: <span class="font-weight-bold">{{ $user->role }}</span></p>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div class="p-3 bg-light rounded">
+                                            <h6 class="font-weight-bold">Access</h6>
+                                            <p class="small mb-0">You are signed in as a <strong>{{ $user->role }}</strong>.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="p-3 bg-light rounded">
+                                            <h6 class="font-weight-bold">Application Status</h6>
+                                            <p class="small mb-0">Use the sidebar to navigate to your allowed sections.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 border rounded">
+                                    <h6 class="font-weight-bold mb-2">Role-specific tools</h6>
+                                    <ul class="mb-0">
+                                        @if($user->role === 'admin')
+                                            <li>Full admin access to admissions and system management.</li>
+                                            <li>Review all applications and update statuses.</li>
+                                        @elseif($user->role === 'staff')
+                                            <li>Review applications and manage staff tasks.</li>
+                                            <li>View application details and update remarks.</li>
+                                        @else
+                                            <li>Submit admission applications.</li>
+                                            <li>View your user profile and manage your own account.</li>
+                                        @endif
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </main>
+
+            </div>
+            <!-- /.container-fluid -->
+
         </div>
+        <!-- End of Main Content -->
+
+        <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; {{ date('Y') }} {{ config('app.name','TESDA Assessment Portal') }}</span>
+                </div>
+            </div>
+        </footer>
+
     </div>
+    <!-- End of Content Wrapper -->
 
-    <script>
-        const sidebar = document.getElementById('dashboard-sidebar');
-        const toggle = document.getElementById('sidebar-toggle');
+</div>
+<!-- End of Page Wrapper -->
 
-        if (toggle && sidebar) {
-            toggle.addEventListener('click', () => {
-                sidebar.classList.toggle('-translate-x-full');
-                sidebar.classList.toggle('translate-x-0');
-            });
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
 
-            document.addEventListener('click', (event) => {
-                const target = event.target;
-                if (window.innerWidth < 1024 && !sidebar.contains(target) && !toggle.contains(target)) {
-                    sidebar.classList.add('-translate-x-full');
-                    sidebar.classList.remove('translate-x-0');
-                }
-            });
-        }
-    </script>
+<!-- Bootstrap core JavaScript-->
+<script src="{{ url('startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ url('startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{{ url('startbootstrap-sb-admin-2-gh-pages/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{{ url('startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js') }}"></script>
 </body>
 </html>
