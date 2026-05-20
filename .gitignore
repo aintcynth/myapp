@@ -16,6 +16,7 @@
 /public/build
 /public/hot
 /public/storage
+/.DS_Store
 /storage/*.key
 /storage/pail
 /vendor
